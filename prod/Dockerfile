@@ -9,7 +9,7 @@ RUN useradd -d /var/www flow
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf && \
     echo "date.timezone = Europe/Berlin" >> /etc/php5/fpm/php.ini && \
     echo "date.timezone = Europe/Berlin" >> /etc/php5/cli/php.ini && \
-    echo "display_errors = on" >> /etc/php5/fpm/php.ini
+    echo "display_errors = off" >> /etc/php5/fpm/php.ini
 
 ADD fpm.conf /etc/php5/fpm/pool.d/www.conf
 ADD nginx-site.conf /etc/nginx/sites-enabled/default
