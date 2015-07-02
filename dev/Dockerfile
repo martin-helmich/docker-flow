@@ -22,6 +22,7 @@ VOLUME /var/www/Data/Persistent
 EXPOSE 80
 
 ONBUILD ADD . /var/www
+ONBUILD RUN composer install
 ONBUILD RUN chown -R flow.flow /var/www
 
 CMD ["/opt/start.sh"]
