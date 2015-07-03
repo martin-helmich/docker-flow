@@ -20,9 +20,6 @@ To do this, start your container like this:
                mariadb:latest
     docker run --name flow-web \
                --link flow-db:db \
-               -e FLOW_DB_HOST=db \
-               -e FLOW_DB_USER=flow \
-               -e FLOW_DB_PASSWORD=othersecret \
                -v $PWD:/var/www \
                -p 80:80 \
                martinhelmich/flow:dev
@@ -64,6 +61,13 @@ The `prod` image differs from the `dev` image in a few aspects:
 3. Furthermore, Doctrine migration will be executed if necessary on startup
    (unless the `FLOW_DB_DISABLE` environment variable was set).
 
+Special behaviours
+------------------
+
+If you link a database container into the application container and use `db` as
+the link alias, the start script will automatically write a `Settings.yaml` file
+containing the database credentials needed for connecting to the linked container.
+
 Running Flow shell commands
 ---------------------------
 
@@ -95,13 +99,3 @@ You can also use `docker exec` to run administrative commands inside the same
 container:
 
     docker exec <app-container-name> supervisorctl restart nginx
-
-Environment variables
----------------------
-
-You can configure this container image's behaviour using the following environment variables (which you can specify at container startup with a `-e <key>=<value>` flag):
-
-1. **FLOW_DB_USER**. Database user to connect with.
-2. **FLOW_DB_HOST**. The database host.
-3. **FLOW_DB_PASSWORD**. The database user's password.
-4. **FLOW_DB_DISABLE**. Set this if your Flow application does not use a database.
