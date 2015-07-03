@@ -64,6 +64,38 @@ The `prod` image differs from the `dev` image in a few aspects:
 3. Furthermore, Doctrine migration will be executed if necessary on startup
    (unless the `FLOW_DB_DISABLE` environment variable was set).
 
+Running Flow shell commands
+---------------------------
+
+The easiest way to run Flow CLI commands is to use the [docker-flow](docker-flow)
+command line tool. This command actually links a new, transient container to
+your application container and executes the command in that container.
+
+First, install the `docker-flow` CLI tool into your Flow application:
+
+    curl https://raw.githubusercontent.com/martin-helmich/docker-flow/master/docker-flow > docker-flow
+    chmod +x docker-flow
+
+Then use it like the conventional `flow` command line utility, specifying the
+name of your application container as the first parameter:
+
+    ./docker-flow flow-web flow:cache:warmup
+
+Various administration tasks
+----------------------------
+
+You can use the general Docker commands to run arbitrary commands or even start
+an interactive shell for your TYPO3 Flow application.
+
+Start a shell in a new container linked to the application container:
+
+    docker run --rm -it --volumes-from <app-container-name> --user flow --workdir /var/www martinhelmich/flow:dev bash
+
+You can also use `docker exec` to run administrative commands inside the same
+container:
+
+    docker exec <app-container-name> supervisorctl restart nginx
+
 Environment variables
 ---------------------
 
