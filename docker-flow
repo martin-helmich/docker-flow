@@ -14,4 +14,4 @@ for link in $(docker inspect -f '{{range .HostConfig.Links}}{{.}}{{end}}' "${flo
     fi
 done
 
-docker run --volumes-from "${flow_container_name}" ${docker_flags} martinhelmich/flow:dev ./flow $@
+docker run --rm --volumes-from "${flow_container_name}" ${docker_flags} martinhelmich/flow:dev ./flow $@
