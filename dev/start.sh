@@ -17,11 +17,11 @@ if [ -n "${DB_PORT}" ] ; then
         password: ${DB_ENV_MYSQL_PASSWORD}" > Configuration/Settings.yaml
     chown flow.flow Configuration/Settings.yaml
 else
-	echo "WARNING: There is no database container linked into this container."
-	echo "         Is this done on purpose? Otherwise create a mariadb:latest container"
-	echo "         and link it into this one using the following flag:"
-	echo ""
-	echo "             --link <db-container-name>:db"
+    echo "WARNING: There is no database container linked into this container."
+    echo "         Is this done on purpose? Otherwise create a mariadb:latest container"
+    echo "         and link it into this one using the following flag:"
+    echo ""
+    echo "             --link <db-container-name>:db"
 fi
 
 exec /usr/bin/supervisord
