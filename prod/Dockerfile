@@ -18,6 +18,7 @@ ADD start.sh /opt/start.sh
 
 WORKDIR /var/www
 
+VOLUME /var/www/Data/Temporary
 VOLUME /var/www/Data/Persistent
 EXPOSE 80
 
