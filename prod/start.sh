@@ -15,7 +15,6 @@ if [ -n "${DB_PORT}" ] ; then
         user: ${DB_ENV_MYSQL_USER}
         dbname: ${DB_ENV_MYSQL_DATABASE}
         password: ${DB_ENV_MYSQL_PASSWORD}" > Configuration/Settings.yaml
-    chown flow.flow Configuration/Settings.yaml
 else
     echo "WARNING: There is no database container linked into this container."
     echo "         Is this done on purpose? Otherwise create a mariadb:latest container"
@@ -23,6 +22,8 @@ else
     echo ""
     echo "             --link <db-container-name>:db"
 fi
+
+chown -R flow.flow .
 
 echo "Warming up caches..."
 su -m -c "./flow flow:cache:warmup" flow

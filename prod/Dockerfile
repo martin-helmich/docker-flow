@@ -18,12 +18,12 @@ ADD start.sh /opt/start.sh
 
 WORKDIR /var/www
 
-VOLUME /var/www/Data/Temporary
 VOLUME /var/www/Data/Persistent
 EXPOSE 80
 
 ONBUILD ADD . /var/www
 ONBUILD RUN rm -rf /var/www/Data/Temporary
+ONBUILD VOLUME /var/www/Data/Temporary
 ONBUILD RUN chown -R flow.flow /var/www
 
 CMD ["/opt/start.sh"]
