@@ -17,7 +17,7 @@ To do this, start your container like this:
                -e MYSQL_PASSWORD=othersecret \
                -e MYSQL_USER=flow \
                -e MYSQL_DATABASE=flow \
-               mariadb:latest
+               mariadb:latest --character-set-server=utf8 --collation-server=utf8_unicode_ci
     docker run --name flow-web \
                --link flow-db:db \
                -v $PWD:/var/www \
