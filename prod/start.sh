@@ -25,10 +25,10 @@ fi
 
 chown -R flow.flow .
 
-echo "Warming up caches..."
-su -m -c "./flow flow:cache:warmup" flow
+echo "Flushing caches..."
+su -m -c "./flow flow:cache:flush" flow
 if [ $? -ne 0 ] ; then
-    echo "Could not warmup caches. Something is very wrong!"
+    echo "Could not flush caches. Something is very wrong!"
     exit 1
 fi
 
@@ -40,6 +40,13 @@ if [ -n "${DB_PORT}" ] ; then
         echo "Set the FLOW_DB_DISABLE environment variable to disable database access."
         exit 1
     fi
+fi
+
+echo "Warming up caches..."
+su -m -c "./flow flow:cache:warmup" flow
+if [ $? -ne 0 ] ; then
+    echo "Could not warmup caches. Something is very wrong!"
+    exit 1
 fi
 
 exec /usr/bin/supervisord
