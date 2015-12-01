@@ -49,4 +49,7 @@ if [ $? -ne 0 ] ; then
     exit 1
 fi
 
+echo "Setting Flow context in Nginx config"
+sed -i -e",Production,$FLOW_CONTEXT,g" /etc/nginx/sites-enabled/default
+
 exec /usr/bin/supervisord
