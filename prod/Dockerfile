@@ -1,5 +1,7 @@
 FROM ubuntu:15.04
 
+ENV FLOW_CONTEXT Production
+
 RUN apt-get update
 RUN apt-get install -y nginx
 RUN apt-get install -y php5-fpm php5-mcrypt php5-mysqlnd php5-curl php5-gd php5-json php5-xsl php5-cli php5-imagick
