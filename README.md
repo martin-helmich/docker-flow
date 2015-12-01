@@ -55,7 +55,8 @@ And run it:
 The `prod` image differs from the `dev` image in a few aspects:
 
 1. Of course, the `FLOW_CONTEXT` environment variable is set to `PRODUCTION` in
-   the `prod` image. Duh.
+   the `prod` image. You can, however, override it on container creation (usually
+   with the `-e FLOW_CONTEXT=...` flag).
 2. On startup, the TYPO3 Flow Cache will be warmed up by executing a
    `./flow flow:cache:warmup` on startup.
 3. Furthermore, Doctrine migration will be executed if necessary on startup
