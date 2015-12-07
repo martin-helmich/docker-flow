@@ -50,9 +50,9 @@ if [ $? -ne 0 ] ; then
 fi
 
 echo "Setting Flow context in Nginx config"
-sed -i -e",Production,$FLOW_CONTEXT,g" /etc/nginx/sites-enabled/default
+sed -i -e"s,Production,$FLOW_CONTEXT,g" /etc/nginx/sites-enabled/default
 
 echo "Setting Flow context in FPM config"
-sed -i -e",Production,$FLOW_CONTEXT,g" /etc/php5/fpm/pool.d/www.conf
+sed -i -e"s,Production,$FLOW_CONTEXT,g" /etc/php5/fpm/pool.d/www.conf
 
 exec /usr/bin/supervisord
