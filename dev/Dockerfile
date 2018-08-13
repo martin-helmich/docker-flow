@@ -15,6 +15,7 @@ RUN apt-get update && \
         php5.6-xsl \
         php5.6-cli \
         php5.6-imagick \
+        php5.6-mbstring \
         supervisor
 
 RUN useradd -d /var/www flow
