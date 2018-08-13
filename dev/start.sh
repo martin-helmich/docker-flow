@@ -24,4 +24,6 @@ else
     echo "             --link <db-container-name>:db"
 fi
 
+mkdir /run/php
+
 exec /usr/bin/supervisord
