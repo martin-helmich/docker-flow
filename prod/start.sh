@@ -53,7 +53,7 @@ echo "Setting Flow context in Nginx config"
 sed -i -e"s,Production,$FLOW_CONTEXT,g" /etc/nginx/sites-enabled/default
 
 echo "Setting Flow context in FPM config"
-sed -i -e"s,Production,$FLOW_CONTEXT,g" /etc/php5/fpm/pool.d/www.conf
+sed -i -e"s,Production,$FLOW_CONTEXT,g" /etc/php/5.6/fpm/pool.d/www.conf
 
 mkdir /run/php
 
