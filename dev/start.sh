@@ -11,7 +11,7 @@ if [ -n "${DB_PORT}" ] ; then
   Flow:
     persistence:
       backendOptions:
-        host: db
+        host: ${DB_ENV_MYSQL_HOST:-db}
         user: ${DB_ENV_MYSQL_USER}
         dbname: ${DB_ENV_MYSQL_DATABASE}
         password: ${DB_ENV_MYSQL_PASSWORD}" > Configuration/Settings.yaml
