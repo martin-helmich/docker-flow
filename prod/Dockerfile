@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 ENV FLOW_CONTEXT Production
 
@@ -7,19 +7,19 @@ RUN apt-get update && \
     add-apt-repository ppa:ondrej/php && \
     apt-get update && \
     apt-get install -y \
-        nginx \
-        php5.6-fpm \
-        php5.6-mcrypt \
-        php5.6-mysqlnd \
-        php5.6-curl \
-        php5.6-gd \
-        php5.6-json \
-        php5.6-xsl \
-        php5.6-cli \
-        php5.6-imagick \
-        php5.6-mbstring \
-        php5.6-soap \
-        supervisor
+    nginx \
+    php5.6-fpm \
+    php5.6-mcrypt \
+    php5.6-mysqlnd \
+    php5.6-curl \
+    php5.6-gd \
+    php5.6-json \
+    php5.6-xsl \
+    php5.6-cli \
+    php5.6-imagick \
+    php5.6-mbstring \
+    php5.6-soap \
+    supervisor
 
 RUN useradd -d /var/www flow
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf && \
